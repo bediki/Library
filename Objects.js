@@ -1,10 +1,11 @@
-const myLibrary = []
+let myLibrary = []
 const dialog = document.querySelector('dialog')
 const showButton = document.querySelector('#add_button_dialog');
 const closeButton = document.querySelector('dialog button');
 const confirmBtn = document.getElementById('confirmBtn');
 const favDialog = document.querySelector('#favDialog');
 const card_container  = document.getElementById('bookList');
+
 
 
 // Vorangelegte Bücher
@@ -43,6 +44,13 @@ closeButton.addEventListener("click", () => {
 
 
 
+
+
+
+
+
+
+
 confirmBtn.addEventListener('click', function (e) {
 
     e.preventDefault(); // We don't want to submit this fake form
@@ -65,34 +73,44 @@ function addBookToLibrary(book) {
 
 
 function createBookCard(book) {
-
-    card_container.innerHTML = '';
-
+    card_container.innerHTML = ''
    
-
-    myLibrary.forEach(book => {
-
+    myLibrary.forEach(bookItem => {
         const card = document.createElement('div');
         card.classList.add('card');
 
         card.innerHTML = `
-        <h2>${book.title}</h2>
-        <p><strong>Author: </strong>${book.author}</p>
-        <p><strong>Pages: </strong>${book.pages}</p>
+        <h2>${bookItem.title}</h2>
+        <p><strong>Author: </strong>${bookItem.author}</p>
+        <p><strong>Pages: </strong>${bookItem.pages}</p>
         <p>
             <strong>Status: </strong>
-            <strong class="read-status ${book.read ? 'read' : 'not'}" >${book.read ? 'read' : 'not read yet'}</strong>
+            <strong class="read-status ${bookItem.read ? 'read' : 'not'}" >${bookItem.read ? 'read' : 'not read yet'}</strong>
         </p>
+        <button class="delete-button" data-title="${bookItem.title}">Delete Book</button>
         ` 
-
         card_container.appendChild(card);
     })
 
+     const deleteButtons = document.querySelectorAll('.delete-button');
+     deleteButtons.forEach(button => {
 
-     
+        button.addEventListener('click', ()=> {
+
+            const title = button.getAttribute('data-title');
+            deleteBook(title);
+            createBookCard();
+
+        });
+    });
 
 
 }
 
+
+function deleteBook(title) {
+    myLibrary = myLibrary.filter(book => book.title !== title);
+
+}
 
 
