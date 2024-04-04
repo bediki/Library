@@ -1,0 +1,54 @@
+/* Your CSS styles */
+
+
+
+
+#add_button_dialog {
+    margin-bottom: 10px;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#add_button_dialog:hover {
+    background-color: #45a049;
+}
+
+/* Your CSS styles */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.card {
+    width:  calc(30% - 20px);
+    margin: 10px; /* Add margin between cards */
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #dddddd;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    margin-bottom: 5px;
+}
+
+.card .read-status {
+    font-weight: bold;
+    color: #4CAF50; /* Green color for "Read" */
+}
+
+.card .read-status.not {
+    color: #f44336; /* Red color for "Not Read" */
+}
