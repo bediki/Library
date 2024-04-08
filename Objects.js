@@ -8,17 +8,6 @@ const card_container  = document.getElementById('bookList');
 
 
 
-// Vorangelegte Bücher
-const theHobbit = new Book("The Hobbit", "J.R.R", 295, 0);
-const hyperion = new Book('Hyperion', 'Dan Simmons', 600, 1);
-const theBible = new Book('Bible', 'no author', 500, 0);
-
-addBookToLibrary(theHobbit);
-addBookToLibrary(hyperion);
-addBookToLibrary(theBible);
-
-
-
 // Buch Klasse
 function Book(title, author, pages, read) {
     this.title = title;
@@ -30,40 +19,40 @@ function Book(title, author, pages, read) {
     }
 }
 
+// Initial Book in library
+const hobbit = new Book('Der Hobbit', 'Tolkien', 200, 0 )
+addBookToLibrary(hobbit)
 
-// "Show the dialog" button opens the dialog modally
-showButton.addEventListener("click", () => {
+
+// Event listener
+showButton.addEventListener("click", openDialog);
+closeButton.addEventListener('click', closeDialog)
+confirmBtn.addEventListener('click', addBookFromForm)
+
+
+// Functions
+
+function openDialog() {
     dialog.showModal();
 }
-);
 
-// "Close" button closes the dialog
-closeButton.addEventListener("click", () => {
+
+function closeDialog() {
     dialog.close();
-});
+}
 
-
-
-
-
-
-
-
-
-
-confirmBtn.addEventListener('click', function (e) {
-
-    e.preventDefault(); // We don't want to submit this fake form
-
+function addBookFromForm(e) {
+    e.preventDefault();
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
-    const read = document.getElementById('read').checked ? 'read' : 'not read yet';
+    const read = document.getElementById('read').checked ? 1 : -1;
     const book = new Book(title, author, pages, read);
     addBookToLibrary(book);
-    favDialog.close();
 
-})
+    closeDialog();
+
+}
 
 
 function addBookToLibrary(book) {
@@ -73,44 +62,66 @@ function addBookToLibrary(book) {
 
 
 function createBookCard(book) {
-    card_container.innerHTML = ''
+
+    card_container.innerHTML = '';
    
     myLibrary.forEach(bookItem => {
         const card = document.createElement('div');
         card.classList.add('card');
 
         card.innerHTML = `
-        <h2>${bookItem.title}</h2>
-        <p><strong>Author: </strong>${bookItem.author}</p>
-        <p><strong>Pages: </strong>${bookItem.pages}</p>
-        <p>
-            <strong>Status: </strong>
-            <strong class="read-status ${bookItem.read ? 'read' : 'not'}" >${bookItem.read ? 'read' : 'not read yet'}</strong>
-        </p>
-        <button class="delete-button" data-title="${bookItem.title}">Delete Book</button>
-        ` 
+            <h2>${bookItem.title}</h2>
+            <p><strong>Author: </strong>${bookItem.author}</p>
+            <p><strong>Pages: </strong>${bookItem.pages}</p>
+            <p>
+                <button class="btn read_status ${bookItem.read ? 'read' : 'not'}" data-title="${bookItem.read}" >${bookItem.read ? 'Read' : 'Not Read'}</button>
+            </p>
+                <button class="btn delete-button" data-title="${bookItem.title}">Delete Book</button>
+        `;
         card_container.appendChild(card);
-    })
+    });
 
-     const deleteButtons = document.querySelectorAll('.delete-button');
-     deleteButtons.forEach(button => {
+    addDeleteBtnEvenList();
+    addReadBtnEvenList();
 
+}
+
+
+function addDeleteBtnEvenList(){
+    const deleteButtons = document.querySelectorAll('.delete-button');
+    deleteButtons.forEach(button => {
         button.addEventListener('click', ()=> {
-
             const title = button.getAttribute('data-title');
             deleteBook(title);
             createBookCard();
+        });
+    });
+}
+
+
+function addReadBtnEvenList(){
+    console.log('avti');
+
+    const readBtn = document.querySelectorAll('.read_status');
+    readBtn.forEach(button => {
+        button.addEventListener('click', ()=> {            
+
+            const status = button.getAttribute('data-title');
+
+            
 
         });
     });
-
-
 }
 
 
 function deleteBook(title) {
     myLibrary = myLibrary.filter(book => book.title !== title);
 
+}
+
+function changeReadStatus(status){
+    myLibrary = myLibrary.filter()
 }
 
 

@@ -1,21 +1,113 @@
 /* Your CSS styles */
+:root {
+    --white: #fffbfb;
+    --grey: #f0eef1;
+    --black: #050505;
+    --red: #ff7070;
+    --blue: #007bff;
+    --light-green: #9fff9c;
+    --light-red: #ff9c9c;
+    --border-radius: 5px;
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 40px;
+    --container-width: 1200px;
+    --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
 
 
 
-
-#add_button_dialog {
-    margin-bottom: 10px;
-    padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+/* Styling the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--grey)
 }
 
-#add_button_dialog:hover {
-    background-color: #45a049;
+/* Styling the button */
+.btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    transition: filter 0.15s ease-in-out;
+    cursor: pointer;
+    border: none;
+    background-color: var(--blue);; /* Blue button color */
+    color: var(--white);
+    padding: 10px 20px;
+  }
+
+.btn:hover {
+    filter: brightness(90%);
+}
+
+
+.read_status {
+    background-color: lightgreen;
+    width: 100%;
+}
+
+.read_status.not {
+    background-color:  lightcoral;
+}
+
+.delete-button {
+    width: 100%;
+    background-color: var(--grey);
+    color: var(--black);
+}
+
+
+
+.header {
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding shadow */
+}
+
+.header h1 {
+    color: #333333; /* Dark text color */
+}
+
+.container {
+    max-width: 960px; /* Maximum width */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+}
+
+
+/* Styling the dialog */
+dialog {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding shadow */
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding shadow */
+    position: fixed; /* Fixed position */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+}
+
+/* Styling the form elements */
+form {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="checkbox"],
+button {
+    margin-bottom: 10px;
 }
 
 /* Your CSS styles */
@@ -23,10 +115,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    width: 100%;
+    background-color: #007bff;
 }
 
 .card {
-    width:  calc(30% - 20px);
+    width:  30%;
     margin: 10px; /* Add margin between cards */
     margin-bottom: 20px;
     padding: 20px;
@@ -49,6 +143,5 @@
     color: #4CAF50; /* Green color for "Read" */
 }
 
-.card .read-status.not {
-    color: #f44336; /* Red color for "Not Read" */
-}
+
+
