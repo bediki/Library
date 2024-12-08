@@ -15,11 +15,12 @@
     </header>
 
     <main class="main container">
+        <input type="text" id="searchBar" placeholder="Search books..." class="btn">
         <dialog id="favDialog">
-            <butto class="btn">Close</button>
+            <button class="btn">Close</button>
             <form id="bookForm">
                 <label for="title">Title:</label>
-                <input type="text" id="title" name="title" required><br>
+                <input type="text" id="title" name="title" placeholder="Bob..." required><br>
                 <label for="author">Author:</label>
                 <input type="text" id="author" name="author" required><br>
                 <label for="pages">Pages:</label>
@@ -30,6 +31,7 @@
             </form>
         </dialog>
         <button id='add_button_dialog' class="btn">Add Book</button>
+        <button id='saveList_btn' class="btn">Save List</button>
         <div id="bookList" class="card-container">
             <!-- Book cards will be added here dynamically -->
         </div>

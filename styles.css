@@ -28,6 +28,7 @@ body {
 /* Styling the button */
 .btn {
     padding: var(--spacing-sm) var(--spacing-md);
+    margin: var(--spacing-sm) 0;
     border-radius: var(--border-radius);
     transition: filter 0.15s ease-in-out;
     cursor: pointer;
@@ -35,7 +36,9 @@ body {
     background-color: var(--blue);; /* Blue button color */
     color: var(--white);
     padding: 10px 20px;
+
   }
+
 
 .btn:hover {
     filter: brightness(90%);
@@ -82,20 +85,21 @@ body {
 
 /* Styling the dialog */
 dialog {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding shadow */
-    width: 300px;
+    max-width: 90%;
+    width: 400px;
     padding: 20px;
-    background-color: #ffffff; /* White background */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding shadow */
-    position: fixed; /* Fixed position */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Styling the form elements */
 form {
-    margin-bottom: 10px;
+    margin-bottom: 10px;;
 }
 
 label {
@@ -144,4 +148,35 @@ button {
 }
 
 
+/* Styling the search bar */
+#searchBar {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    border: 1px solid #cccccc;
+    border-radius: var(--border-radius, 5px);
+    background-color: var(--white, #ffffff);
+    font-size: 16px;
+    color: #333333;
+    outline: none;
+    box-shadow: var(--shadow, rgba(0, 0, 0, 0.16) 0px 1px 4px);
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
 
+/* Placeholder text styling */
+#searchBar::placeholder {
+    color: #cccccc; /* Light gray color */
+    font-style: italic;
+}
+
+/* Input text styling after typing */
+#searchBar:focus {
+    color: #000000; /* Black text */
+    border-color: var(--blue, #007bff); /* Blue border on focus */
+    background-color: #f9f9f9;
+}
+
+/* Add margin for spacing */
+#searchBar {
+    margin-bottom: var(--spacing-md, 15px);
+}
